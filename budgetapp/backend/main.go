@@ -21,9 +21,17 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
-		AllowHeaders: []string{echo.HeaderContentType, echo.HeaderAuthorization},
+		AllowOrigins: []string{"http://localhost:5173"},
+		AllowMethods: []string{
+			http.MethodGet,
+			http.MethodPost,
+			http.MethodPut,
+			http.MethodDelete,
+		},
+		AllowHeaders: []string{
+			echo.HeaderContentType,
+			echo.HeaderAuthorization,
+		},
 	}))
 
 	h := handlers.NewHandler(database)
